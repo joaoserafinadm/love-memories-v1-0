@@ -1,8 +1,31 @@
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@plugin "flowbite/plugin";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Tema claro (padrão) */
+  --color-background: #ffffff;
+  --color-foreground: #1a1a1a;
+  --color-primary: #f43f5e; /* rose-500 */
+  --color-primary-hover: #e11d48; /* rose-600 */
+  --color-secondary: #6b7280;
+  --color-secondary-hover: #4b5563;
+  --color-border: #e5e7eb;
+}
+
+.dark {
+  /* Tema escuro */
+  --color-background: #1a1a1a;
+  --color-foreground: #f3f4f6;
+  --color-primary: #f43f5e; /* rose-500 */
+  --color-primary-hover: #fb7185; /* rose-400 */
+  --color-secondary: #9ca3af;
+  --color-secondary-hover: #d1d5db;
+  --color-border: #374151;
 }
 
 @theme inline {
@@ -20,7 +43,7 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: var(--color-background) !important;
+  color: var(--color-foreground);
 }
