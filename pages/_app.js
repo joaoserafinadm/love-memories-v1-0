@@ -1,5 +1,5 @@
-import "bootstrap/dist/css/bootstrap.min.css"; // Primeiro
-import "@/styles/globals.css"; // Depois (Tailwind e seus temas) // Depois seu CSS que deve sobrescrever o Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@/styles/globals.css";
 import "@/styles/text.scss";
 
 import { useEffect, useState } from "react";
@@ -10,11 +10,13 @@ import jwt from "jsonwebtoken";
 import '@fontsource/source-sans-pro/400.css';
 import '@fontsource/source-sans-pro/700.css';
 import PresentationConfig from "@/src/pages/PresentationConfig";
+import MainLayout from "@/src/layouts/mainLayout";
 
-export default function App({ Component, pageProps }) {
-  
+import { appWithTranslation } from 'next-i18next';
+
+function App({ Component, pageProps }) {
   const [token, setToken] = useState(null);
-  
+
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.min.js");
 
@@ -25,23 +27,24 @@ export default function App({ Component, pageProps }) {
     }
   }, []);
 
-  // if (token === null) return null;
   return (
     <>
       {!token && (
         <ThemeProvider>
-
+          <MainLayout>
             <PresentationConfig />
+          </MainLayout>
         </ThemeProvider>
-
       )}
       {token && (
         <ThemeProvider>
-
+          <MainLayout>
             <Component {...pageProps} />
+          </MainLayout>
         </ThemeProvider>
-
       )}
     </>
   );
 }
+
+export default appWithTranslation(App);

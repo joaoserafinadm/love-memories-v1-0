@@ -1,3 +1,4 @@
+import ConfigPresentation_01 from "./ConfigPresentation_01";
 import FirstSlide from "./FirstSlide";
 
 
@@ -14,7 +15,7 @@ export default function PresentationConfig() {
             <FirstSlide />
           </div>
           <div className="carousel-item ">
-            2
+            <ConfigPresentation_01 />
           </div>
         </div>
       </div>
