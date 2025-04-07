@@ -8,7 +8,7 @@ const Input = ({
   name,
   type = 'text',
   placeholder = '',
-  value,
+  value = '',
   onChange,
   variant = 'default',
   size = 'md',
@@ -17,7 +17,9 @@ const Input = ({
   className = '',
   ...props
 }) => {
-  const { theme } = useTheme();
+  // Proteção para caso o contexto não esteja disponível
+  const themeContext = useTheme();
+  const theme = themeContext?.theme || 'light';
 
   const sizeClasses = {
     sm: 'text-sm px-2 py-1',
@@ -38,12 +40,19 @@ const Input = ({
 
   const inputClasses = `
     block w-full rounded-md border focus:outline-none focus:ring-2
-    ${sizeClasses[size]}
+    ${sizeClasses[size] || sizeClasses.md}
     ${variantClasses[variant] || variantClasses.default}
     ${errorClass}
     ${disabledClass}
     ${className}
   `;
+
+  // Manipulador de evento com verificação de segurança
+  const handleChange = (e) => {
+    if (onChange && typeof onChange === 'function') {
+      onChange(e);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-1">
@@ -58,7 +67,7 @@ const Input = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         disabled={disabled}
         className={inputClasses}
         {...props}
