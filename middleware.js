@@ -65,7 +65,7 @@ export function middleware(request) {
 // Configurar a middleware para ser executada apenas nas páginas (não em arquivos estáticos)
 export const config = {
   matcher: [
-    // Pular arquivos estáticos e API routes
-    '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    // Ignora APIs, arquivos estáticos e qualquer coisa com extensão
+    '/((?!api|_next|favicon.ico|.*\\..*).*)'
   ]
 };

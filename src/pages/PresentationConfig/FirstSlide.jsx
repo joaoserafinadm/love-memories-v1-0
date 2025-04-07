@@ -30,9 +30,9 @@ export default function FirstSlide() {
             transition={{ duration: 0.6 }}
           >
             <Card  >
-              <div className="row">
+              <div className="row mb-4">
                 <div className="col-12 d-flex justify-content-center">
-                  <img src="/LOGO_02.png" alt="Logo" width={100} />
+                  <img src="/LOGO_02.png" alt="Logo" width={250} />
                 </div>
               </div>
               <h1 className="text-4xl font-bold text-c-primary mb-4">
