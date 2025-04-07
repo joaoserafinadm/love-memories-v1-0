@@ -27,26 +27,31 @@ const translations = {
   },
 };
 
-export function useTranslation(namespace = 'common') {
+export function useTranslation(namespaces = ['common']) {
   const router = useRouter();
   const { locale, locales, asPath } = router;
-  
-  // Obter a tradução atual com base no locale e namespace
-  const t = (key, ns = namespace) => {
-    // Suporta acesso aninhado (ex: "nav.home")
-    const keys = key.split('.');
-    let translation = translations[locale]?.[ns];
-    
-    // Navegar na estrutura aninhada de traduções
-    for (const k of keys) {
-      translation = translation?.[k];
-      if (translation === undefined) break;
+
+  // Garantir que `namespaces` seja um array
+  const nsArray = Array.isArray(namespaces) ? namespaces : [namespaces];
+
+  const t = (key) => {
+    // Tentar encontrar a chave em cada namespace fornecido
+    for (const ns of nsArray) {
+      const keys = key.split('.');
+      let translation = translations[locale]?.[ns];
+
+      for (const k of keys) {
+        translation = translation?.[k];
+        if (translation === undefined) break;
+      }
+
+      if (translation !== undefined) return translation;
     }
-    
-    return translation !== undefined ? translation : key;
+
+    // Se não encontrar, retorna a chave como fallback
+    return key;
   };
 
-  // Alternar entre os idiomas disponíveis
   const changeLanguage = (newLocale) => {
     router.push(asPath, asPath, { locale: newLocale });
   };
