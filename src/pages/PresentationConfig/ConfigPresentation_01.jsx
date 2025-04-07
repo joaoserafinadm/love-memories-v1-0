@@ -64,7 +64,7 @@ export default function ConfigPresentation_01() {
 
                     <div className="row d-flex">
                         <p>Quando vocês se conheceram?</p>
-                        <div className="col-12 d-flex  my-2">
+                        {/* <div className="col-12 d-flex  my-2">
                             <div className="col-3 px-1">
 
                                 <Select
@@ -106,7 +106,7 @@ export default function ConfigPresentation_01() {
                                     onChange={''}
                                 />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
                 <div className="row">
