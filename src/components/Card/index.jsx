@@ -14,7 +14,7 @@ const Card = ({
 }) => {
   const { theme } = useTheme();
 
-  const baseClasses = 'p-4 transition-all duration-300';
+  const baseClasses = 'p-4 transition-all duration-300 mx-1';
 
   const sizeClasses = {
     sm: 'p-3 text-sm',

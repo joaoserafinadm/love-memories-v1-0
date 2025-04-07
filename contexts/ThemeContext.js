@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   // Verificar se há uma preferência salva no localStorage
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   
   
@@ -23,6 +23,7 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
   }, []);
   
   // Função para alternar entre temas

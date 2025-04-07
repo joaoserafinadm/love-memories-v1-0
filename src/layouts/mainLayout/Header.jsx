@@ -7,7 +7,7 @@ export function Header() {
   const { theme } = useTheme();
 
   return (
-    <header className={`w-full border-b  ${theme === "dark" ? "bg-black border-gray-800" : "bg-white border-gray-200"}`}> 
+    <header className={`position-fixed w-full border-b  ${theme === "dark" ? "bg-black border-gray-800" : "bg-white border-gray-200"}`}> 
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
         <div className="flex items-center gap-2 lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5 flex items-center gap-2">
@@ -18,7 +18,7 @@ export function Header() {
               width={32}
               height={32}
             />
-            <span className="text-lg font-semibold text-gray-900 dark:text-white">Love Memories</span>
+            <span className={`text-lg font-semibold text-gray-900 dark:text-white`}>Love Memories</span>
           </a>
         </div>
         <div className="flex lg:hidden">

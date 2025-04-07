@@ -1,3 +1,5 @@
+// pages/_app.js
+import { appWithTranslation } from 'next-i18next';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.css";
 import "@/styles/text.scss";
@@ -11,8 +13,6 @@ import '@fontsource/source-sans-pro/400.css';
 import '@fontsource/source-sans-pro/700.css';
 import PresentationConfig from "@/src/pages/PresentationConfig";
 import MainLayout from "@/src/layouts/mainLayout";
-
-import { appWithTranslation } from 'next-i18next';
 
 function App({ Component, pageProps }) {
   const [token, setToken] = useState(null);
@@ -29,14 +29,13 @@ function App({ Component, pageProps }) {
 
   return (
     <>
-      {!token && (
+      {!token ? (
         <ThemeProvider>
           <MainLayout>
             <PresentationConfig />
           </MainLayout>
         </ThemeProvider>
-      )}
-      {token && (
+      ) : (
         <ThemeProvider>
           <MainLayout>
             <Component {...pageProps} />
